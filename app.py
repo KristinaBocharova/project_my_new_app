@@ -28,4 +28,4 @@ fig2 = px.histogram(filtered_data, x='odometer', title="Odometer Distribution")
 st.plotly_chart(fig2)
 
 st.write('Here is the list of recommended cars')
-st.dataframe(filtered_data.sample(5))
+st.dataframe(filtered_data.sample(5)) 
