@@ -29,3 +29,6 @@ st.plotly_chart(fig2)
 
 st.write('Here is the list of recommended cars')
 st.dataframe(filtered_data.sample(5)) 
+
+filtered_data['price'] = pd.to_numeric(filtered_data['price'], errors='coerce')
+filtered_data.dropna(subset=['price'], inplace=True)
