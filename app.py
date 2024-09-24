@@ -2,12 +2,19 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 
-data=pd.read_csv('vehicles_us.csv')
+# Load data with error handling
+try:
+    data = pd.read_csv('vehicles_us.csv')
+except FileNotFoundError:
+    st.error("The file 'vehicles_us.csv' was not found. Please check the file path.")
+    st.stop()
 
+# Data preprocessing
 data['price'] = pd.to_numeric(data['price'], errors='coerce')
 data['model_year'] = pd.to_numeric(data['model_year'], errors='coerce')
 data['odometer'] = pd.to_numeric(data['odometer'], errors='coerce')
 
+# Fill missing values
 def fill_model_year_with_median(group):
     median = group.median()  
     return group.fillna(median)  
@@ -16,6 +23,7 @@ data['model_year'] = data.groupby('model')['model_year'].transform(fill_model_ye
 
 data['odometer'] = data['odometer'].fillna(data.groupby('model_year')['odometer'].transform('mean'))
 
+# Streamlit interface
 st.header('Choose your car!')
 
 price_range=st.slider("What is your price range", value=(1, 375000))
@@ -24,6 +32,7 @@ actual_range=list(range(price_range[0], price_range[1]+1))
 
 high_year = st.checkbox('Only cars from 2019 or newer')
 
+# Filter data 
 if high_year:
     filtered_data = data[(data['price'].isin(actual_range)) & (data['model_year'] >= 2019)]
 else:
