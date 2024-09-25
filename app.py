@@ -2,12 +2,8 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 
-# Load data with error handling
-try:
-    data = pd.read_csv('vehicles_us.csv')
-except FileNotFoundError:
-    st.error("The file 'vehicles_us.csv' was not found. Please check the file path.")
-    st.stop()
+# Load data 
+data = pd.read_csv('vehicles_us.csv')
 
 # Data preprocessing
 data['price'] = pd.to_numeric(data['price'], errors='coerce')
@@ -22,6 +18,7 @@ def fill_model_year_with_median(group):
 data['model_year'] = data.groupby('model')['model_year'].transform(fill_model_year_with_median)
 
 data['odometer'] = data['odometer'].fillna(data.groupby('model_year')['odometer'].transform('mean'))
+data['odometer'] = data['odometer'].fillna(data['odometer'].mean())
 
 # Streamlit interface
 st.header('Choose your car!')
@@ -42,14 +39,28 @@ else:
 if filtered_data.empty:
     st.write("No cars match your criteria.")
 else:
-    st.write('Here are your options with a split by price and model year')
+    # Scatter plot with a split by price and model_year
+    st.write('Here are your options with a split by price and model year:')
     fig = px.scatter(filtered_data, x="price", y="model_year", title="Price vs Model Year")
     st.plotly_chart(fig)
 
-    st.write('Distribution of odometer of filtered cars')
+    # Conclusion from the scatter plot with a split by price and model_year
+    st.write('Conclusion about the depandancy of price from model_year:')
+    st.write('1) Most of the cars on this scatter plot are priced below $80,000')
+
+    # Histogram showing distribution of cars by odometer 
+    st.write('Distribution of odometer of filtered cars:')
     fig2 = px.histogram(filtered_data, x='odometer', title="Odometer Distribution")
     st.plotly_chart(fig2)
 
+    # Conclusion from the histogram with a distribution by odometer
+    st.write('Conclusion about the distribution of car by odometer:')
+    st.write('1) Most of the cars have odometer ranging from 10,000 to 30,000 miles.')
+    st.write('2) The highest bar corresponds to a mileage of about 20,000 miles, which means that this is the most common mileage among the sampled vehicles.')
+    st.write('3) There are a few cars with over 50,000 miles, but they represent a small percentage of the total.')
     
-    st.write('Here is the list of recommended cars')
-    st.dataframe(filtered_data.sample(5))
+
+
+
+    
+    
