@@ -22,7 +22,7 @@ pip install -r requirements.txt
 6. Launch the application:
 streamlit run app.py
 
-Open the application in your browser: Go to http://localhost:10000
+Open the application in your browser: Go to http://localhost:10000/
 
 Example of use:
 Use the slider to select a price range.
@@ -31,4 +31,4 @@ View charts and a table with recommended cars based on your criteria.
 
 
 Link to my app on Render:
-https://car-project-6o39.onrender.com
+https://cars-project-s8af.onrender.com
