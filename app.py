@@ -37,23 +37,23 @@ else:
 
 
 # Scatter plot with a split by price and model_year
-st.write('Here are your options with a split by price and model year:')
+st.header('Here are your options with a split by price and model year:')
 fig = px.scatter(filtered_data, x="price", y="model_year", title="Price vs Model Year")
 st.plotly_chart(fig)
 
 # Conclusion from the scatter plot with a split by price and model_year
-st.write('Conclusion about the depandancy of price from model_year:')
+st.write('Conclusion about the depandancy of price from model year:')
 st.write('1) Most of the cars on this scatter plot are priced below $80,000')
 
 # Histogram showing distribution of cars by odometer 
-st.write('Distribution of odometer of filtered cars:')
+st.header('Distribution of odometer of filtered cars:')
 fig2 = px.histogram(filtered_data, x='odometer', title="Odometer Distribution")
 st.plotly_chart(fig2)
 
 # Conclusion from the histogram with a distribution by odometer
 st.write('Conclusion about the distribution of car by odometer:')
-st.write('1) Most of the cars have odometer ranging from 10,000 to 30,000 miles.')
-st.write('2) The highest bar corresponds to a mileage of about 20,000 miles, which means that this is the most common mileage among the sampled vehicles.')
+st.write('1) Most of the cars have odometer ranging from 10,000 to 45,000 miles.')
+st.write('2) The highest bar corresponds to a mileage of about 15,000 miles, which means that this is the most common mileage among the sampled vehicles.')
 st.write('3) There are a few cars with over 50,000 miles, but they represent a small percentage of the total.')
 
 
