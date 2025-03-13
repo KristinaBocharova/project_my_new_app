@@ -1,6 +1,6 @@
 # **My New App**  
 
-## **Project Description:
+## **Project Description:**
 This project is a tool for describing random events that allows users to select cars based on given parameters, such as price range and year of manufacture. The application provides visualizations to help analyze the choice of cars and their characteristics.
 
 ## Methods and libraries used: 
@@ -9,7 +9,7 @@ This project is a tool for describing random events that allows users to select 
 - Streamlit: For creating web applications.
 - Plotly Express: For data visualization (graphs and charts).
 
-Installation:
+## Installation:
 1. Clone the repository:
 git clone https://github.com/KristinaBocharova/project.git
 2. Go to the project directory:
