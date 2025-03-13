@@ -1,7 +1,9 @@
-Project descripyion.
+# **My New App**  
+
+## **Project Description:
 This project is a tool for describing random events that allows users to select cars based on given parameters, such as price range and year of manufacture. The application provides visualizations to help analyze the choice of cars and their characteristics.
 
-Methods and libraries used: 
+## Methods and libraries used: 
 - Python: The main programming language.
 - Pandas: For data processing and analysis.
 - Streamlit: For creating web applications.
