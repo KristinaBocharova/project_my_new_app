@@ -10,20 +10,6 @@ This project is a tool for describing random events that allows users to select 
 - Plotly Express: For data visualization (graphs and charts).
 
 ## Installation:
-1. Clone the repository:
-git clone https://github.com/KristinaBocharova/project.git
-2. Go to the project directory:
-cd project
-3. Create a virtual environment:
-python -m venv venv
-4. Activate the virtual environment:
-for Windows: venv\Scripts\activate
-for macOS/Linux: source venv/bin/activate
-5. Install dependencies:
-pip install -r requirements.txt
-6. Launch the application:
-streamlit run app.py
-
 Open the application in your browser: Go to http://localhost:10000/
 
 Example of use:
